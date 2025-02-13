@@ -2,7 +2,7 @@
 
 <section>
   <h1>Squad 1G</h1>
-  <p class="sub-title">Ontdek meer over onze squad door te <strong>filteren</strong> via de knoppen hieronder!</p>
+  <p class="sub-title">Ontdek meer over onze squad door te <strong>categoriseren</strong> via de knoppen hieronder!</p>
   <ul class="filter-select-buttons">
     <button onclick="window.location.href='/'">Avatar</button>
     <button onclick="window.location.href='/eten/'">Eten</button>
@@ -10,9 +10,22 @@
     <button onclick="window.location.href='/land/'">Land</button>
     <button onclick="window.location.href='/kleur/'">Kleur</button>
     <button onclick="window.location.href='/verjaardag/'">Verjaardag</button>
+    <button onclick="window.location.href='/dier/'">Dier</button>
+    <button onclick="window.location.href='/hobby/'">Hobby</button>
   </ul>
-  {% comment %} <img src="assets/stock"/> {% endcomment %}
+  {% comment %} <img src="assets/stock" /> {% endcomment %}
 </section>
+
+<article class="filter-bar">
+  <img src="assets/help.png" alt="..." class="help-icon" />
+  {% comment %} <p class="filter-sub-text">Specifieker willen <strong>filteren</strong>? Dat kan via de knop hiernaast.</p> {% endcomment %}
+  <select id="filters" name="Kies je filters">
+    <option>Kies je filter</option>
+    <option>...</option>
+    <option>...</option>
+    <option>...</option>
+  </select>
+</article>
 
 <div>
   <div class="grid-container">
