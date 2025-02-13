@@ -50,7 +50,7 @@ let filters = {
   emoji: null,
 };
 const baseUrl =
-  "https://fdnd.directus.app/items/person/?fields=id,name,squads.squad_id.name,fav_color,fav_emoji,fav_country,birthdate,avatar,fav_kitchen&filter[squads][squad_id][name][_eq]=1G&filter[birthdate][_neq]=null&sort=birthdate";
+  "https://fdnd.directus.app/items/person/?fields=id,name,squads.squad_id.name,fav_color,fav_emoji,fav_country,birthdate,avatar,github_handle,fav_kitchen&filter[squads][squad_id][name][_eq]=1G&filter[birthdate][_neq]=null&sort=birthdate";
 
 // In theorie zou het super chill zijn om hier een functie van te maken maar tijd enzo
 // const addToFilter = (updatedFilters) => {
