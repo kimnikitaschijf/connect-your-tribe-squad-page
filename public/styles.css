@@ -81,7 +81,7 @@ button {
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
+    grid-template-columns: repeat(auto-fit, minmax(110px, 2fr));
     gap: 1rem;
     justify-items: center;
 }
