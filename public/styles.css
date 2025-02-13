@@ -1,6 +1,6 @@
 /* Algemene stijlen */
 html {
-    background-color: #F7EDF0;
+    background-color: #04083F;
 }
 
 /* Titel bovenaan */
@@ -8,6 +8,7 @@ h1 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
     font-size: xx-large;
+    color: #88E2C1;
 }
 
 /* Grid-container: Layout voor de kaarten */
@@ -23,8 +24,8 @@ h1 {
     width: 6rem;
     height: 6rem;
     border-radius: 50%;
-    background-color: #F4CBC6;
-    border: 0.5rem solid #e9a19e;
+    background-color: #B594FC;
+    border: 0.5rem solid #9F7AEF;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
     
@@ -87,12 +88,13 @@ h2 {
     justify-content: center;
     align-items: center;
     border-radius: 50rem;
+    background-color: #04083F;
 }
 
 /* Achterkant tekst */
 p {
     position: absolute;
-    color: #000000;
+    color: #88E2C1;
     border-radius: 2rem;
     margin: 1rem;
     font-size: 1rem;
