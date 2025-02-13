@@ -27,6 +27,7 @@
   "homepage": "https://github.com/fdnd-task/connect-your-tribe-squad-page#readme",
   "dependencies": {
     "express": "^5.0.1",
-    "liquidjs": "^10.20.2"
+    "liquidjs": "^10.20.2",
+    "nodemon": "^3.1.9"
   }
 }

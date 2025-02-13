@@ -1,10 +1,34 @@
 {% render 'partials/head.liquid', title: 'Squad page' %}
 
-<h2>Students</h2>
-<ul>
-  {% for person in persons %}
-    <li><a href="/student/{{ person.id }}">{{ person.name }}</a></li>
-  {% endfor %}
-</ul>
+<section>
+  <h1>Squad 1G</h1>
+</section>
+
+<div>
+  <div class="grid-container">
+    {% for person in persons %}
+    <article class="card-layout">
+      <div class="card-inner">
+
+        <!-- Voorkant van de kaart -->
+        <div id="front" class="card-side">
+          {% if show == 'avatar' %} {% if person.avatar %}
+          <img src="{{ person[show] }}" alt="Avatar van {{ person.name }}" />
+          {% else %}
+          <img src="https://github.com/{{ person.github_handle }}.png" alt="Avatar van {{ person.name }}"/>
+          {% endif %} {% else %}
+          <h2>{{ person[show] }}</h2>
+          {% endif %}
+        </div>
+
+        <!-- Achterkant van de kaart -->
+        <div id="back" class="card-side">
+          <p>{{ person.name }}</p>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</div>
 
 {% render 'partials/foot.liquid', squads: squads %}

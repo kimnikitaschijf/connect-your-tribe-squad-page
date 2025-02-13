@@ -1,0 +1,113 @@
+/* Algemene stijlen */
+html {
+    background-color: #F7EDF0;
+}
+
+/* Titel bovenaan */
+h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    font-size: xx-large;
+}
+
+/* Grid-container: Layout voor de kaarten */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    justify-items: center;
+}
+
+/* Card layout voor de cirkels */
+.card-layout {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    background-color: #F4CBC6;
+    border: 0.5rem solid #e9a19e;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    
+    /* Hover effect zoom cirkel */
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+/* 3D Flip Effect */
+#card-layout {
+    width: 100%;
+    height: 100%;
+    max-width: 350px;
+    max-height: 600px;
+    position: relative;
+    margin: auto;
+}
+
+/* De inner structuur van kaart (voor & achterkant) */
+.card-inner {
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    transition: transform 0.35s ease;
+    width: 100%;
+    height: 100%;
+
+    /* Flip effect */
+    &.do-flip {
+        transform: rotateY(180deg);
+    }
+}
+
+/* Voor & achterkant van  kaart */
+.card-side {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden; 
+}
+
+#front {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50rem;
+}
+
+/* Voorkant grootte item */
+h2 {
+    font-size: 3.5rem;
+}
+
+#back {
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50rem;
+}
+
+/* Achterkant tekst */
+p {
+    position: absolute;
+    color: #000000;
+    border-radius: 2rem;
+    margin: 1rem;
+    font-size: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    opacity: 0; 
+    transition: opacity 0.3s ease-in-out;
+
+    /* Toont tekst bij flip */
+    .card-inner.do-flip & {
+        opacity: 1;
+    }
+}
+
+/* Avatars van kaart */
+img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+}
+

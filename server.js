@@ -42,11 +42,35 @@ app.set('views', './views')
 app.use(express.urlencoded({extended: true}))
 
 
+let filters = {
+  name: null,
+  fav_color: null,
+  birthdate: null,
+  avatar: null,
+  emoji: null
+}
+const baseUrl = 'https://fdnd.directus.app/items/person/?fields=id,name,squads.squad_id.name,fav_color,fav_emoji,fav_country,birthdate,avatar&filter[squads][squad_id][name][_eq]=1G&sort=name';
+
+// In theorie zou het super chill zijn om hier een functie van te maken maar tijd enzo
+// const addToFilter = (updatedFilters) => {
+//   let addedString = '';
+
+//   updatedFilters.keys().forEach(filter => {
+//     console.log(filter);
+
+//     // if (filter == null) {
+//     //   addedString = `{"${filter}":{"_neq":"null"}`
+//     // }
+//   })
+
+// }
+
 // Om Views weer te geven, heb je Routes nodig
 // Maak een GET route voor de index
 app.get('/', async function (request, response) {
   // Haal alle personen uit de WHOIS API op, van dit jaar
-  const personResponse = await fetch('https://fdnd.directus.app/items/person/?sort=name&fields=*,squads.squad_id.name,squads.squad_id.cohort&filter={"_and":[{"squads":{"squad_id":{"tribe":{"name":"FDND Jaar 1"}}}},{"squads":{"squad_id":{"cohort":"2425"}}}]}')
+  // const personResponse = await fetch('https://fdnd.directus.app/items/person/?sort=name&fields=*,squads.squad_id.name,squads.squad_id.cohort&filter={"_and":[{"squads":{"squad_id":{"tribe":{"name":"FDND Jaar 1"}}}},{"squads":{"squad_id":{"cohort":"2425"}}}]}')
+  const personResponse = await fetch(baseUrl)
 
   // En haal daarvan de JSON op
   const personResponseJSON = await personResponse.json()
@@ -56,8 +80,68 @@ app.get('/', async function (request, response) {
 
   // Render index.liquid uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
   // Geef ook de eerder opgehaalde squad data mee aan de view
-  response.render('index.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
+  response.render('index.liquid', {persons: personResponseJSON.data, show: 'avatar', squads: squadResponseJSON.data})
 })
+
+app.get('/emoji/', async function (request, response) {
+  const filterString = '&filter[_and][0][fav_emoji][_neq]=null&filter[_and][1][squads][squad_id][name][_eq]=1G'
+
+  // Haal alle personen uit de WHOIS API op, van dit jaar
+  const personResponse = await fetch(baseUrl + filterString)
+
+
+  // En haal daarvan de JSON op
+  const personResponseJSON = await personResponse.json()
+  
+  // personResponseJSON bevat gegevens van alle personen uit alle squads van dit jaar
+  // Je zou dat hier kunnen filteren, sorteren, of zelfs aanpassen, voordat je het doorgeeft aan de view
+
+  // Render index.liquid uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
+  // Geef ook de eerder opgehaalde squad data mee aan de view
+  response.render('index.liquid', {persons: personResponseJSON.data, show: 'fav_emoji', squads: squadResponseJSON.data})
+})
+
+
+app.get('/land/', async function (request, response) {
+  const filterString = '&filter[_and][0][fav_country][_neq]=null&filter[_and][1][squads][squad_id][name][_eq]=1G'
+
+  // Haal alle personen uit de WHOIS API op, van dit jaar
+  const personResponse = await fetch(baseUrl + filterString)
+
+
+  // En haal daarvan de JSON op
+  const personResponseJSON = await personResponse.json()
+  
+  // personResponseJSON bevat gegevens van alle personen uit alle squads van dit jaar
+  // Je zou dat hier kunnen filteren, sorteren, of zelfs aanpassen, voordat je het doorgeeft aan de view
+
+  // Render index.liquid uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
+  // Geef ook de eerder opgehaalde squad data mee aan de view
+  response.render('index.liquid', {persons: personResponseJSON.data, show: 'fav_country', squads: squadResponseJSON.data})
+})
+
+
+
+// app.get('/emoji/:emoji', async function (request, response) {
+
+//   const chosenEmoji = request.params.emoji ? '{"_eq":"'+ request.params.emoji + '"}' : '{"_neq":"null"}'
+//   const filterString = '&filter={"_and":[{"fav_emoji":'+ chosenEmoji +'},{"squads":{"squad_id":{"name":{"_eq":"1G"}}}}]}'
+
+//   // Haal alle personen uit de WHOIS API op, van dit jaar
+//   const personResponse = await fetch(baseUrl + filterString)
+
+
+//   // En haal daarvan de JSON op
+//   const personResponseJSON = await personResponse.json()
+  
+//   // personResponseJSON bevat gegevens van alle personen uit alle squads van dit jaar
+//   // Je zou dat hier kunnen filteren, sorteren, of zelfs aanpassen, voordat je het doorgeeft aan de view
+
+//   // Render index.liquid uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
+//   // Geef ook de eerder opgehaalde squad data mee aan de view
+//   response.render('index.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
+// })
+
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
 app.post('/', async function (request, response) {
