@@ -12,12 +12,10 @@
 
         <!-- Voorkant van de kaart -->
         <div id="front" class="card-side">
-          {% if show == 'avatar' %} {% if person.avatar %}
+          {% if show == 'avatar' %} {% if person.avatar and person.avatar != '' %}
           <img src="{{ person[show] }}" alt="Avatar van {{ person.name }}" />
           {% else %}
-          {% comment %} <img src="https://github.com/{{ person.github_handle }}.png"
-            alt="Avatar van {{ person.name }}" /> {% endcomment %}
-          <img src="assets/stock-avatar-meme.jpg" alt="Stock avatar van {{ person.name }}" />
+          <img src="https://github.com/{{ person.github_handle }}.png" alt="Avatar van {{ person.name }}" />
           {% endif %} {% else %}
           <h2>{{ person[show] }}</h2>
           {% endif %}
