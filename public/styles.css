@@ -75,7 +75,10 @@ h1 {
 
 /* Voorkant grootte item */
 h2 {
-    font-size: 3.5rem;
+    font-size: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    line-height: 1.5rem;
 }
 
 #back {
