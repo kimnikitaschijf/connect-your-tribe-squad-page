@@ -86,6 +86,7 @@ button {
     grid-template-columns: repeat(auto-fit, minmax(110px, 2fr));
     gap: 1rem;
     justify-items: center;
+    margin: 0rem 2rem 0rem 2rem;
 }
 
 /* Card layout voor de cirkels */
