@@ -1,9 +1,7 @@
 /* Algemene stijlen */
-html {
-    background-color: #04083F;
-}
-
+html,
 body {
+    background-color: #04083F;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -36,50 +34,52 @@ ul {
     padding: 0;
     gap: 1rem;
 
-}
-
-li {
-    list-style: none;
-    margin: 2rem;
-}
-
-button {
-    border-radius: 50rem;
-    padding: 0.7rem;
-    border: 0.2rem solid #88E2C1 ;
-    background-color: #04083F;
-    color: #88E2C1;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.help-icon {
-    width: 2rem;
-    height: 2rem;
-    cursor: pointer;
+    button {
+        border-radius: 50rem;
+        padding: 0.7rem;
+        border: 0.2rem solid #88E2C1;
+        background-color: #04083F;
+        color: #88E2C1;
+        text-decoration: underline;
+        cursor: pointer;
+    }
 }
 
 .filter-bar {
     display: flex;
     justify-content: center;
-    gap:1rem;
+    gap: 1rem;
+
+    .help-icon {
+        width: 2rem;
+        height: 2rem;
+        cursor: pointer;
+    }
+
+    #filters {
+        border-radius: 50rem;
+        padding: 0.7rem;
+        background-color: #88E2C1;
+        color: #04083F;
+        cursor: pointer;
+        display: flex;
+        justify-self: center;
+        margin-bottom: 2rem;
+    }
 }
 
-/* .filter-sub-text {
-    font-size: 1rem;
-    display: none;
-} */
-
-#filters {
-    border-radius: 50rem;
-    padding: 0.7rem;
-    background-color: #88E2C1;
-    color: #04083F;
-    cursor: pointer;
-    display: flex;
-    justify-self: center;
-    margin-bottom: 2rem;
+/* dynamische classes voor elk filter */
+.fav_emoji {
+    font-size: 4rem;
 }
+
+
+
+
+
+
+
+
 
 .grid-container {
     display: grid;
@@ -87,101 +87,82 @@ button {
     gap: 1rem;
     justify-items: center;
     margin: 0rem 2rem 0rem 2rem;
-}
 
-/* Card layout voor de cirkels */
-.card-layout {
-    width: 6rem;
-    height: 6rem;
-    border-radius: 50%;
-    background-color: #B594FC;
-    border: 0.5rem solid #9F7AEF;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-    
-    /* Hover effect zoom cirkel */
-    &:hover {
-        transform: scale(1.1);
+    /* Card layout voor de cirkels */
+    .card-layout {
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        background-color: #B594FC;
+        border: 0.5rem solid #9F7AEF;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+
+        /* Hover effect zoom cirkel */
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    /* De inner structuur van kaart (voor & achterkant) */
+    .card-inner {
+        position: relative;
+        transform-style: preserve-3d;
+        transform: rotateY(0deg);
+        transition: transform 0.35s ease;
+        width: 100%;
+        height: 100%;
+
+        /* Flip effect */
+        &.do-flip {
+            transform: rotateY(180deg);
+        }
+
+        #front {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50rem;
+        }
+
+        /* Avatars van kaart */
+        img {
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+        }
+
+        /* Voor & achterkant van  kaart */
+        .card-side {
+            position: absolute;
+            inset: 0;
+            backface-visibility: hidden;
+        }
+
+        #back {
+            transform: rotateY(180deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50rem;
+            background-color: #04083F;
+
+            /* Achterkant tekst */
+            .back-text {
+                position: absolute;
+                color: #88E2C1;
+                border-radius: 2rem;
+                margin: 1rem;
+                font-size: 1rem;
+                text-align: center;
+                opacity: 0;
+                transition: opacity 0.3s ease-in-out;
+
+                /* Toont tekst bij flip */
+                .card-inner.do-flip & {
+                    opacity: 1;
+                }
+            }
+        }
     }
 }
-
-/* 3D Flip Effect */
-#card-layout {
-    width: 100%;
-    height: 100%;
-    max-width: 350px;
-    max-height: 600px;
-    position: relative;
-    margin: auto;
-}
-
-/* De inner structuur van kaart (voor & achterkant) */
-.card-inner {
-    position: relative;
-    transform-style: preserve-3d;
-    transform: rotateY(0deg);
-    transition: transform 0.35s ease;
-    width: 100%;
-    height: 100%;
-
-    /* Flip effect */
-    &.do-flip {
-        transform: rotateY(180deg);
-    }
-}
-
-/* Voor & achterkant van  kaart */
-.card-side {
-    position: absolute;
-    inset: 0;
-    backface-visibility: hidden; 
-}
-
-#front {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50rem;
-}
-
-/* Voorkant grootte item */
-h2 {
-    font-size: 1rem;
-    text-align: center;
-    line-height: 1.5rem;
-    color: #88E2C1
-}
-
-#back {
-    transform: rotateY(180deg);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50rem;
-    background-color: #04083F;
-}
-
-/* Achterkant tekst */
-.back-text {
-    position: absolute;
-    color: #88E2C1;
-    border-radius: 2rem;
-    margin: 1rem;
-    font-size: 1rem;
-    text-align: center;
-    opacity: 0; 
-    transition: opacity 0.3s ease-in-out;
-
-    /* Toont tekst bij flip */
-    .card-inner.do-flip & {
-        opacity: 1;
-    }
-}
-
-/* Avatars van kaart */
-img {
-    width: 5rem;
-    height: 5rem;
-    border-radius: 50%;
-}
-
