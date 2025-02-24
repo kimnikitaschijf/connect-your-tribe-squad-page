@@ -1,0 +1,15 @@
+{% for message in messages %}
+
+    <p>{{message}}</p>
+
+{% endfor %}
+
+<form method="post" action="/berichten">
+
+    <label>Tekstje:
+        <input type="text" name="tekstje" required>
+    </label>
+
+    <button type="submit">Voeg toe!</button>
+</form>
+

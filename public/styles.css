@@ -29,19 +29,23 @@ ul {
     flex-wrap: wrap;
     justify-content: center;
     list-style: none;
-    margin: 0;
-    margin-bottom: 2rem;
+    margin: 1.2rem 0rem 1.5rem 0rem;
     padding: 0;
     gap: 1rem;
 
-    button {
+    li {
         border-radius: 50rem;
         padding: 0.7rem;
         border: 0.2rem solid #88E2C1;
         background-color: #04083F;
-        color: #88E2C1;
         text-decoration: underline;
         cursor: pointer;
+        text-decoration: none;
+
+        a {
+            color: #88E2C1;
+            text-decoration: none;
+        }
     }
 }
 
@@ -86,7 +90,6 @@ ul {
     grid-template-columns: repeat(auto-fit, minmax(110px, 2fr));
     gap: 1rem;
     justify-items: center;
-    margin: 0rem 2rem 0rem 2rem;
 
     /* Card layout voor de cirkels */
     .card-layout {
